@@ -3,13 +3,6 @@ import { UnauthorizedException } from "../exceptions/unauthorized";
 import { ErrorCode } from "../exceptions/root";
 import * as jwt from "jsonwebtoken";
 import { prismaClient } from "../app";
-import { User } from "@prisma/client";
-
-declare module "express" {
-  interface Request {
-    user?: User;
-  }
-}
 
 export const isAuth = async (
   req: Request,
