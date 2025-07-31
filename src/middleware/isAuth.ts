@@ -3,7 +3,7 @@ import { UnauthorizedException } from "../exceptions/unauthorized";
 import { ErrorCode } from "../exceptions/root";
 import * as jwt from "jsonwebtoken";
 import { prismaClient } from "../app";
-import { User } from "@prisma/client"; // Убедитесь, что импортирован User
+import { User } from "@prisma/client";
 
 declare module "express" {
   interface Request {
@@ -41,7 +41,7 @@ export const isAuth = async (
 
     req.user = user;
     next();
-  } catch (error) {
+  } catch (err) {
     next(new UnauthorizedException("Unauthorized.", ErrorCode.UNAUTHORIZED));
   }
 };
